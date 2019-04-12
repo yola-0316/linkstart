@@ -1,28 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { getDegFromCenterOrigin } from './utils';
+import useEventListener from './hooks/use-event-listener';
+import Routes from './components/Routes';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const getGradient = (x, y) => {
+  return `linear-gradient( ${getDegFromCenterOrigin(x, y)}deg, #fdfbfb 1%, #ebedee 100%)`;
+};
+
+export default function App() {
+  const [[x, y], setCoords] = useState([0, 0]);
+
+  useEventListener('mousemove', ({ clientX, clientY }) => {
+    setCoords([clientX, clientY]);
+  });
+
+  return (
+    <div className="App" style={{ backgroundImage: getGradient(x, y) }}>
+      <Router>
+        <div>
+          <Routes />
+        </div>
+      </Router>
+    </div>
+  );
 }
-
-export default App;

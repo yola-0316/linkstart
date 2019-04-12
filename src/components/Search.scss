@@ -1,0 +1,24 @@
+%base {
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  height: 30px;
+  vertical-align: middle;
+  outline: none;
+}
+
+.search {
+  .engine-select {
+    @extend %base;
+  }
+  .search-text {
+    @extend %base;
+    appearance: none;
+    width: 300px;
+  }
+  .search-btn {
+    @extend %base;
+    appearance: none;
+    cursor: pointer;
+    padding: 0 30px;
+  }
+}
