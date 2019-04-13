@@ -9,6 +9,10 @@ export default function Search({ engineList }) {
     setEngine(e.target.value);
   }
 
+  function handleEnter({ keyCode }) {
+    if (keyCode === 13) handleQuery();
+  }
+
   function handleQuery() {
     if (text) window.open(`${engine}${text}`, '_blank', '');
   }
@@ -22,7 +26,13 @@ export default function Search({ engineList }) {
           </option>
         ))}
       </select>
-      <input className="search-text" type="text" value={text} onChange={e => setText(e.target.value)} />
+      <input
+        className="search-text"
+        type="text"
+        value={text}
+        onKeyUp={handleEnter}
+        onChange={e => setText(e.target.value)}
+      />
       <button className="search-btn" onClick={handleQuery}>
         查询
       </button>
