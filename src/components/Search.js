@@ -4,17 +4,23 @@ import React, { useState } from 'react';
 export default function Search({ engineList }) {
   const [engine, setEngine] = useState(engineList[0].value);
   const [text, setText] = useState('');
+  const [composing, setComposing] = useState(false);
 
   function handleChange(e) {
     setEngine(e.target.value);
   }
 
   function handleEnter({ keyCode }) {
-    if (keyCode === 13) handleQuery();
+    if (keyCode !== 13 || composing) return;
+    handleQuery();
   }
 
   function handleQuery() {
     if (text) window.open(`${engine}${text}`, '_blank', '');
+  }
+
+  function handleComposition(e) {
+    setComposing(!(e.type === 'compositionend'));
   }
 
   return (
@@ -30,7 +36,10 @@ export default function Search({ engineList }) {
         className="search-text"
         type="text"
         value={text}
-        onKeyUp={handleEnter}
+        onCompositionStart={handleComposition}
+        onCompositionUpdate={handleComposition}
+        onCompositionEnd={handleComposition}
+        onKeyDown={handleEnter}
         onChange={e => setText(e.target.value)}
       />
       <button className="search-btn" onClick={handleQuery}>
