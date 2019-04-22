@@ -1,14 +1,15 @@
 import React from 'react';
-import { engineList } from '../utils/constants';
-import Header from '../components/Header';
-import Search from '../components/Search';
-import Navigation from '../components/Navigation';
+import Setting from '../components/Setting/Setting';
+import Header from '../components/Header/Header';
+import Search from '../components/Search/Search';
+import Navigation from '../components/Navigation/Navigation';
 
 export default function Home() {
   return (
     <div className="home-page">
+      <Setting />
       <Header />
-      <Search engineList={engineList} />
+      <Search />
       <Navigation />
     </div>
   );

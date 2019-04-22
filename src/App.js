@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { getDegFromCenterOrigin } from './utils';
-import useEventListener from './hooks/use-event-listener';
+import { useEventListener } from './hooks';
 import Routes from './components/Routes';
 
 const getGradient = (x, y) => {
