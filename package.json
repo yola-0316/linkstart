@@ -29,18 +29,25 @@
       "@commitlint/config-conventional"
     ]
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@sentry/browser": "5.7.1",
     "@types/jest": "24.0.22",
     "@types/node": "12.12.6",
     "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
+    "@types/react-router-dom": "5.1.2",
     "office-ui-fabric-react": "7.59.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",

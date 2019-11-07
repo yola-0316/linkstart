@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import routes from '../routes';
 import NotFound from '../pages/NotFound';
 
-const Routes = props => (
+const Routes = () => (
   <div className="routes">
     <Switch>
       {routes.map(({ exact, path, component }, i) => (

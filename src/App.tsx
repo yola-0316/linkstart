@@ -4,14 +4,14 @@ import { getDegFromCenterOrigin } from './utils';
 import { useEventListener } from './hooks';
 import Routes from './components/Routes';
 
-const getGradient = (x, y) => {
+const getGradient = (x: number, y: number) => {
   return `linear-gradient( ${getDegFromCenterOrigin(x, y)}deg, #fdfbfb 1%, #ebedee 100%)`;
 };
 
 export default function App() {
   const [[x, y], setCoords] = useState([0, 0]);
 
-  useEventListener('mousemove', ({ clientX, clientY }) => {
+  useEventListener('mousemove', ({ clientX, clientY }: { clientX: number; clientY: number }) => {
     setCoords([clientX, clientY]);
   });
 
