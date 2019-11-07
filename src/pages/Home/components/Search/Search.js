@@ -1,8 +1,8 @@
 import './Search.scss';
 import React from 'react';
-import { useComposing } from '../../hooks';
+import { useComposing } from '../../../../hooks';
 import { useSearchEngine } from './hook';
-import { engineList } from '../../utils/constants';
+import { engineList } from '../../../../utils/constants';
 
 export default function Search() {
   const [composing, handleComposition] = useComposing();
