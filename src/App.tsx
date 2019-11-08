@@ -1,27 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { init } from '@rematch/core';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { getDegFromCenterOrigin } from './utils';
-import { useEventListener } from './hooks';
+import { Fabric } from 'office-ui-fabric-react';
+import * as models from './models';
 import Routes from './components/Routes';
 
-const getGradient = (x: number, y: number) => {
-  return `linear-gradient( ${getDegFromCenterOrigin(x, y)}deg, #fdfbfb 1%, #ebedee 100%)`;
-};
+const store = init({
+  models,
+});
 
 export default function App() {
-  const [[x, y], setCoords] = useState([0, 0]);
-
-  useEventListener('mousemove', ({ clientX, clientY }: { clientX: number; clientY: number }) => {
-    setCoords([clientX, clientY]);
-  });
-
   return (
-    <div className="App" style={{ backgroundImage: getGradient(x, y) }}>
-      <Router>
-        <div>
+    <Provider store={store}>
+      <Fabric>
+        <Router>
           <Routes />
-        </div>
-      </Router>
-    </div>
+        </Router>
+      </Fabric>
+    </Provider>
   );
 }
