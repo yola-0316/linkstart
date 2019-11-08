@@ -7,6 +7,8 @@
 }
 
 .search {
+  width: 600px;
+  margin: auto;
   text-align: center;
   .engine-select {
     @extend %base;

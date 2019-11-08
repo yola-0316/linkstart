@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, CompositionEvent } from 'react';
 
 export { useEventListener } from './use-event-listener';
 export { useLocalStorage } from './use-localstorage';
 
 export function useComposing(initialComposing = false) {
   const [composing, setComposing] = useState(initialComposing);
-  const handleComposition = e => setComposing(!(e.type === 'compositionend'));
+  const handleComposition = (e: CompositionEvent<HTMLInputElement>) => setComposing(!(e.type === 'compositionend'));
 
   return [composing, handleComposition];
 }
