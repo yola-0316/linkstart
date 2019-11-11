@@ -1,13 +1,13 @@
 import './Search.scss';
-import React from 'react';
-import { PrimaryButton, DefaultButton, TextField } from 'office-ui-fabric-react';
+import React, { useState, useCallback } from 'react';
+import { DefaultButton, TextField } from 'office-ui-fabric-react';
 import { useComposing } from 'hooks/index';
 import { useSearchEngine } from './hook';
 import { engineList } from 'utils/constants';
 
 export default function Search() {
-  const [composing, handleComposition] = useComposing();
-  const { engine, handleEngineChange, text, handleTextChange, handleQuery } = useSearchEngine(engineList, composing);
+  const [composing, handleComposition] = useComposing(false);
+  const { engine, handleEngineChange, text, handleTextChange, handleQuery } = useSearchEngine(engineList, composing as boolean);
 
   return (
     <div className="search">

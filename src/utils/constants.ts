@@ -1,4 +1,9 @@
-export const engineList = [
+interface engine {
+  name: string;
+  value: string;
+}
+
+export const engineList: engine[] = [
   {
     name: 'bing',
     value: '//www.bing.com/search?q=',

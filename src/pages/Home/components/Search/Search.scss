@@ -17,6 +17,7 @@
     @extend %base;
     appearance: none;
     width: 300px;
+    border: none;
   }
   .search-btn {
     @extend %base;
